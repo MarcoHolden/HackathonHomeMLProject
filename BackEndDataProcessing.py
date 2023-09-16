@@ -1,4 +1,0 @@
-# Practice
-# Practice
-# PracticeGitHub
-# PracticeGitHub
