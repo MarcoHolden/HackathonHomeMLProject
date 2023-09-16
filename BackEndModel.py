@@ -33,7 +33,7 @@ p = input("Are you ready for your prediction? ")
 
 new_data = pd.DataFrame({
     'location': [23476],
-    'price': [395000],
+    'price': [500000],
     'year': [2000],
     'qualityOfEducation': [5],
     'age': [33],
@@ -57,4 +57,4 @@ new_data = pd.DataFrame({
 })
 # Predict apartment IDs for the new data
 predicted_apartment_ids = model.predict(new_data)
-print("You may love Apartment", round(predicted_apartment_ids[0]))
+print(round(predicted_apartment_ids[0]))
