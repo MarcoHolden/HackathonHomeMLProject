@@ -28,6 +28,9 @@ p = input("Are you ready for your prediction? ")
 
 # Predict the apartment IDs for new data
 # Replace 'new_data' with the features of the new data you want to predict
+# This data must be fully filled or a dummy default value should be set
+# Solution is force the consumer to answer questions or set default to avg
+
 new_data = pd.DataFrame({
     'location': [23476],
     'price': [395000],
