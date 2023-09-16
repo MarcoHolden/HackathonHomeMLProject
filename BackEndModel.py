@@ -57,4 +57,4 @@ new_data = pd.DataFrame({
 })
 # Predict apartment IDs for the new data
 predicted_apartment_ids = model.predict(new_data)
-print(round(predicted_apartment_ids[0]))
+print(int(predicted_apartment_ids[0]))
