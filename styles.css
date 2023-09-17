@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-image: url("/static/pictures/bgHouse.png");
+     background-size: auto; /*Adjust background size as needed */
+    background-position: center; /*Adjust background position as needed */
+    color: #f9f4f4; /* Text color on top of the background image */
+    text-align: center; /* Center-align text */
+    padding: 70px 0; /* Adjust padding as needed */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    padding-top: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+.radio {
+    padding-left: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Search bar styles */
+.search-bar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Main content styles */
+main {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the content stretches to at least the full viewport height */
+    margin-left: 50px;
+  
+}
+
+img {
+    height: 200px;
+    width: 300px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+/* .transportationOptions {
+    display: flex;
+    flex-direction: row;
+
+} */
