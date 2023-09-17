@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>House Finder</title>
+   
+</head>
+<body>
+    <div class="form-container">
+        <h1>House Finder</h1>
+        <form id="house-finder-form" action="/resultForm" method="POST">
+            <label for="state">State:</label>
+            <select id="state" name="state" onchange="populateCities()" required>
+                <option value="">Select State</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississippi">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="Montana">Montana</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Rhode Island">Rhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
+            </select>
+   
+            <label for="city">City:</label>
+            <select id="city" name="city" onchange="populateNeighborhoods()" disabled required>
+                <option value="">Select City</option>
+            </select>
+   
+            <label for="neighborhood">Neighborhood:</label>
+            <select id="neighborhood" name="neighborhood" disabled required>
+                <option value="">Select Neighborhood</option>
+            </select>
+
+            <label for="zip-code">Zip Code:</label>
+            <input type="text" id="zip-code" name="zip-code" placeholder="e.g., 12345" required>
+
+            <label for="price_range">Price Range:</label>
+            <input type="text" id="price_range" name="price_range" placeholder="e.g., 200,000" required>
+            <!-- <select id="price_range" name="price_range">
+                <option value="">Select a Price Range</option>
+                <option value = >$50,000 - $100,000</option>
+                <option >$100,000 - $150,000</option>
+                <option >$150,000 - $200,000</option>
+                <option >$200,000 - $250,000</option>
+                <option >$250,000 - $300,000</option>
+                <option >$300,000 - $350,000</option>
+               
+                <option>$350,000 - $400,000</option>
+                <option >$400,000 - $450,000</option>
+                <option >$450,000 - $500,000</option>
+                <option >$500,000 - $550,000</option>
+                <option >$550,000 - $600,000</option>
+                <option >$600,000 - $650,000</option>
+                <option >$650,000 - $700,000</option>
+                <option >$700,000 - $750,000</option>
+                <option >$750,000 - $800,000</option>
+            </select> -->
+
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" placeholder="e.g., 2000" required>
+
+            <label for="age">Your Age:</label>
+            <input type="number" id="age" name="age" placeholder="Your age" required>
+
+
+            <!--Include education quality-->
+            <!--Include drinkable water index-->
+         
+           
+           
+            <label for="energy-efficiency">Energy Efficiency</label>
+            <select id="energy-efficiency" name="energy-efficiency" required>
+                <option value="">Select an Option</option>
+                <option value="0">Highly energy-efficient</option>
+                <option value="1">Somewhat energy-efficient</option>
+                <option value="2">Not energy-efficient</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+
+            <label for="laundry-room">Laundry Room</label>
+            <select id="laundry-room" name="laundry-room" required>
+                <option value="">Select an Option</option>
+                <option value="0">Must have one</option>
+                <option value="1">Would be nice to have one</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+
+            <label for="hospital">Hospital</label>
+            <select id="hospital" name="hospital" required>
+                <option value="">Select an Option</option>
+                <option value="0">Must be within 5 miles</option>
+                <option value="1">Must be within 10 miles</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+
+            <label for="bike-friendly">Biker Friendliness</label>
+            <select id="bike-friendly" name="bike-friendly" required>
+                <option value="">Select an Option</option>
+                <option value="0">Highly bike-friendly</option>
+                <option value="1">Somewhat bike-friendly</option>
+                <option value="2">Not bike-friendly</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+
+            <label for="water-drinkability">Water Drinkability Index</label>
+            <select id="water-drinkability" name="water-drinkability" required>
+                <option value="">Select an Option</option>
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">3</option>
+                <option value="3">4</option>
+                <option value="4">5</option>
+            </select>
+
+            <label for="tidy-neighborhood">Cleanliness of Neighborhood</label>
+            <select id="tidy-neighborhood" name="tidy-neighborhood" required>
+                <option value="">Select an Option</option>
+                <option value="0">Very Clean</option>
+                <option value="1">Clean</option>
+                <option value="2">Somewhat Clean</option>
+                <option value="3">Doesn't Matter</option>
+            </select>
+
+
+
+            <label for="public-transport">Public Transport</label>
+            <select id="public-transport" name="public-transport" required>
+                <option value="">Select an Option</option>
+                <option value="0">Widely available</option>
+                <option value="1">Somewhat available</option>
+                <option value="2">Not available</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+
+            <label for="walk-friendly">Pedestrian Friendliness</label>
+            <select id="walk-friendly" name="walk-friendly" required>
+                <option value="">Select an Option</option>
+                <option value="0">Highly walk-friendly</option>
+                <option value="1">Somewhat walk-friendly</option>
+                <option value="2">Not walk-friendly</option>
+                <option value="3">Doesn't really matter</option>
+            </select>
+           
+            <label for="community">Type of Community:</label>
+            <select id="community" name="community" required>
+                <option value="">Select an Option</option>
+                <option value=0>Age-Restricted</option>
+                <option value=1>Independent Living</option>
+                <option value=2>Continuing Care Retirement</option>
+                <option value=3>Assisted Living</option>
+                <option value=4>Nursing Homes and Skilled Nursing Facilities</option>
+                <option value=5>No Preference</option>
+            </select>
+
+            <label for="community">Quality of Education:</label>
+            <select id="rating1" name="rating1" required>
+                <option value="">Select an Option</option>
+                <option value=0>1</option>
+                <option value=1>2</option>
+                <option value=2>3</option>
+                <option value=3>4</option>
+                <option value=4>5</option>
+                <option value=5>No Preference</option>
+            </select>
+
+            <button type="submit">Find Houses</button>
+           
+        </form>
+    </div>
+
+    <script>
+        const cityData = {
+            "Alabama": ["Birmingham", "Montgomery", "Mobile"],
+            "Alaska": ["Anchorage", "Fairbanks", "Juneau"],
+            "Arizona": ["Phoenix", "Tucson", "Mesa"],
+            "Arkansas": ["Little Rock", "Fayetteville", "Fort Smith"],
+            "California": ["Los Angeles", "San Francisco", "San Diego"],
+            "Colorado": ["Denver", "Colorado Springs", "Aurora"],
+            "Connecticut": ["Bridgeport", "Hartford", "New Haven"],
+            "Delaware": ["Wilmington", "Dover", "Newark"],
+            "Florida": ["Miami", "Orlando", "Tampa"],
+            "Georgia": ["Atlanta", "Savannah", "Augusta"],
+            "Hawaii": ["Honolulu", "Maui", "Kauai"],
+            "Idaho": ["Boise", "Idaho Falls", "Nampa"],
+            "Illinois": ["Chicago", "Springfield", "Peoria"],
+            "Indiana": ["Indianapolis", "Fort Wayne", "Evansville"],
+            "Iowa": ["Des Moines", "Cedar Rapids", "Davenport"],
+            "Kansas": ["Wichita", "Kansas City", "Topeka"],
+            "Kentucky": ["Louisville", "Lexington", "Frankfort"],
+            "Louisiana": ["New Orleans", "Baton Rouge", "Shreveport"],
+            "Maine": ["Portland", "Augusta", "Bangor"],
+            "Maryland": ["Baltimore", "Annapolis", "Frederick"],
+            "Massachusetts": ["Boston", "Worcester", "Springfield"],
+            "Michigan": ["Detroit", "Grand Rapids", "Lansing"],
+            "Minnesota": ["Minneapolis", "St. Paul", "Rochester"],
+            "Mississippi": ["Jackson", "Gulfport", "Hattiesburg"],
+            "Missouri": ["Kansas City", "St. Louis", "Springfield"],
+            "Montana": ["Billings", "Missoula", "Helena"],
+            "Nebraska": ["Omaha", "Lincoln", "Bellevue"],
+            "Nevada": ["Las Vegas", "Reno", "Henderson"],
+            "New Hampshire": ["Manchester", "Nashua", "Concord"],
+            "New Jersey": ["Newark", "Jersey City", "Trenton"],
+            "New Mexico": ["Albuquerque", "Santa Fe", "Las Cruces"],
+            "New York": ["New York City", "Buffalo", "Rochester"],
+            "North Carolina": ["Charlotte", "Raleigh", "Greensboro"],
+            "North Dakota": ["Fargo", "Bismarck", "Grand Forks"],
+            "Ohio": ["Columbus", "Cleveland", "Cincinnati"],
+            "Oklahoma": ["Oklahoma City", "Tulsa", "Norman"],
+            "Oregon": ["Portland", "Salem", "Eugene"],
+            "Pennsylvania": ["Philadelphia", "Pittsburgh", "Harrisburg"],
+            "Rhode Island": ["Providence", "Warwick", "Cranston"],
+            "South Carolina": ["Columbia", "Charleston", "Greenville"],
+            "South Dakota": ["Sioux Falls", "Rapid City", "Aberdeen"],
+            "Tennessee": ["Nashville", "Memphis", "Knoxville"],
+            "Texas": ["Houston", "Dallas", "Austin"],
+            "Utah": ["Salt Lake City", "Provo", "Ogden"],
+            "Vermont": ["Burlington", "Montpelier", "Rutland"],
+            "Virginia": ["Richmond", "Virginia Beach", "Norfolk"],
+            "Washington": ["Seattle", "Spokane", "Tacoma"],
+            "West Virginia": ["Charleston", "Huntington", "Morgantown"],
+            "Wisconsin": ["Milwaukee", "Madison", "Green Bay"],
+            "Wyoming": ["Cheyenne", "Casper", "Laramie"]
+        };
+
+        function populateCities() {
+            const stateSelect = document.getElementById("state");
+            const citySelect = document.getElementById("city");
+            const selectedState = stateSelect.value;
+
+            citySelect.innerHTML = "<option value=''>Select City</option>";
+            document.getElementById("neighborhood").innerHTML = "<option value=''>Select Neighborhood</option>";
+
+            if (selectedState) {
+                const cities = cityData[selectedState];
+                if (cities) {
+                    citySelect.removeAttribute("disabled");
+
+                    cities.forEach(city => {
+                        const option = document.createElement("option");
+                        option.value = city;
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                }
+            } else {
+                citySelect.setAttribute("disabled", true);
+                document.getElementById("neighborhood").setAttribute("disabled", true);
+            }
+        }
+
+        function populateNeighborhoods() {
+            const citySelect = document.getElementById("city");
+            const neighborhoodSelect = document.getElementById("neighborhood");
+            const selectedCity = citySelect.value;
+
+   
+        neighborhoodSelect.innerHTML = "<option value=''>Select Neighborhood</option>";
+
+        if (selectedCity) {
+            const neighborhoods = getNeighborhoodsForCity(selectedCity);
+        if (neighborhoods) {
+            neighborhoodSelect.removeAttribute("disabled");
+
+            neighborhoods.forEach(neighborhood => {
+                const option = document.createElement("option");
+                option.value = neighborhood;
+                option.textContent = neighborhood;
+                neighborhoodSelect.appendChild(option);
+            });
+        }
+        } else {
+        neighborhoodSelect.setAttribute("disabled", true);
+        }
+    }
+
+
+    function getNeighborhoodsForCity(city) {
+   
+    const neighborhoodData = {
+        "Birmingham": ["Downtown Birmingham", "Southside", "Highland Park", "Five Points South", "Avondale", "Crestwood", "Forest Park", "Homewood"],
+        "Montgomery": ["Downtown Montgomery", "Old Cloverdale", "Capitol Heights", "Hillwood", "Forest Park", "Dalraida", "Cottage Hill", "Glenwood"],
+        "Mobile": ["Downtown Mobile", "Midtown", "Oakleigh Garden Historic District", "Spring Hill", "West Mobile", "Cypress Shores", "Country Club Village", "Airmont"],
+        "Anchorage": ["Downtown", "Midtown", "South Addition"],
+        "Fairbanks": ["Downtown Fairbanks", "College", "Fox"],
+        "Juneau": ["Downtown Juneau", "Douglas", "Mendenhall Valley"],
+        "Phoenix": ["Downtown Phoenix", "Scottsdale", "Tempe"],
+        "Tucson": ["Downtown Tucson", "University of Arizona", "Barrio Historico"],
+        "Mesa": ["Downtown Mesa", "Dobson Ranch", "Eastmark"],
+        "Little Rock": ["Downtown Little Rock", "Hillcrest", "West Little Rock"],
+        "Fayetteville": ["Downtown Fayetteville", "Dickson Street", "Sunnymede"],
+        "Fort Smith": ["Downtown Fort Smith", "Chaffee Crossing", "Fianna Hills"],
+        "Los Angeles": ["Downtown LA", "Hollywood", "Venice Beach"],
+        "San Francisco": ["Downtown San Francisco", "Nob Hill", "Mission District"],
+        "San Diego": ["Downtown San Diego", "Pacific Beach", "La Jolla"],
+        "Denver": ["Downtown Denver", "Capitol Hill", "Highland", "Cherry Creek", "Stapleton"],
+        "Colorado Springs": ["Downtown Colorado Springs", "Old Colorado City", "Briargate", "Security-Widefield", "Powers"],
+        "Aurora": ["Downtown Aurora", "Meadow Hills", "Saddle Rock", "Highpoint", "Heather Gardens"],
+        "Bridgeport": ["Downtown Bridgeport", "Black Rock", "Brooklawn - St. Vincent", "North End", "East End"],
+        "Hartford": ["Downtown Hartford", "West End", "South Green", "Asylum Hill", "North Meadows"],
+        "New Haven": ["Downtown New Haven", "East Rock", "Westville", "Dwight", "The Hill"],
+        "Wilmington": ["Downtown Wilmington", "East Side", "West Side", "Hilltop", "Trolley Square"],
+        "Dover": ["Downtown Dover", "Capitol Green", "Olde Dover", "Edgehill", "Mayfair"],
+        "Newark": ["Downtown Newark", "Pike Creek Valley", "Brookside", "Glasgow", "Christiana"],
+        "Miami": ["Downtown Miami", "South Beach", "Brickell", "Coconut Grove", "Coral Gables"],
+        "Orlando": ["Downtown Orlando", "Thornton Park", "Lake Eola Heights", "Colonialtown", "Mills 50"],
+        "Tampa": ["Downtown Tampa", "Hyde Park", "Seminole Heights", "Tampa Palms", "Westshore Business District"],
+        "Atlanta": ["Downtown Atlanta", "Midtown", "Buckhead", "Virginia-Highland", "Inman Park"],
+        "Savannah": ["Historic District", "Ardsley Park-Chatham Crescent", "Midtown", "Windsor Forest", "Isle of Hope"],
+        "Augusta": ["Downtown Augusta", "Summerville", "West Augusta", "National Hills", "Harrisburg"],
+        "Honolulu": ["Downtown Honolulu", "Waikiki", "Kakaako", "Manoa", "Diamond Head"],
+        "Maui": ["Kahului", "Lahaina", "Kihei", "Wailuku", "Makawao"],
+        "Kauai": ["Lihue", "Kapaa", "Hanalei", "Koloa", "Waimea"],
+        "Boise": ["Downtown Boise", "North End", "Southeast Boise", "West Bench", "Warm Springs Mesa"],
+        "Idaho Falls": ["Downtown Idaho Falls", "Ammon", "Westside", "Sunrise", "Lincoln"],
+        "Nampa": ["Downtown Nampa", "Midland", "Karcher Junction", "West Valley", "Moss"],
+        "Chicago": ["Downtown Chicago", "Lincoln Park", "Lakeview", "Wicker Park", "Hyde Park"],
+        "Springfield": ["Downtown Springfield", "Enos Park", "Historic West Side", "Harvard Park", "Oak Ridge"],
+        "Peoria": ["Downtown Peoria", "East Bluff", "North Valley", "West Central", "Glen Oak"],
+        "Indianapolis": ["Downtown Indianapolis", "Broad Ripple", "Fountain Square", "Irvington", "Carmel"],
+        "Fort Wayne": ["Downtown Fort Wayne", "West Central", "Northside", "Foster Park", "Southwood Park"],
+        "Evansville": ["Downtown Evansville", "Lincolnshire", "Jacobsville", "Stringtown", "Melody Hill"],
+        "Des Moines": ["Downtown Des Moines", "East Village", "Drake", "Beaverdale", "Waveland Park"],
+        "Cedar Rapids": ["Downtown Cedar Rapids", "New Bohemia", "Northwest Area", "Mound View", "Wellington Heights"],
+        "Davenport": ["Downtown Davenport", "Village of East Davenport", "McClellan Heights", "Duck Creek", "Northwest Davenport"],
+        "Wichita": ["Downtown", "Riverside", "College Hill"],
+        "Kansas City": ["Downtown", "Strawberry Hill", "Turner"],
+        "Topeka": ["Downtown", "North Topeka", "Potwin"],
+        "Louisville": ["Downtown", "Highlands", "Old Louisville"],
+        "Lexington": ["Downtown", "Chevy Chase", "Ashland Park"],
+        "Frankfort": ["Downtown", "Bellepoint", "Silver Lake"],
+        "New Orleans": ["French Quarter", "Garden District", "Marigny"],
+        "Baton Rouge": ["Downtown", "Mid City", "Garden District"],
+        "Shreveport": ["Downtown", "Broadmoor", "Caddo Heights"],
+        "Portland": ["Old Port", "East End", "Back Cove"],
+        "Augusta": ["Downtown", "Sand Hill", "North Augusta"],
+        "Bangor": ["Downtown", "Fairmount", "Little City"],
+        "Baltimore": ["Inner Harbor", "Fells Point", "Federal Hill"],
+        "Annapolis": ["Historic Annapolis", "West Annapolis", "Eastport"],
+        "Frederick": ["Downtown Frederick", "Ballenger Creek", "Hillcrest"],
+        "Boston": ["Back Bay", "Beacon Hill", "South End"],
+        "Worcester": ["Downtown Worcester", "Shrewsbury Street", "Burncoat"],
+        "Springfield": ["Metro Center", "Six Corners", "Forest Park"],
+        "Detroit": ["Downtown Detroit", "Midtown", "Corktown"],
+        "Grand Rapids": ["Downtown Grand Rapids", "Heritage Hill", "Eastown"],
+        "Lansing": ["Downtown Lansing", "Old Town", "Waldo"],
+        "Minneapolis": ["Downtown Minneapolis", "Uptown", "North Loop"],
+        "St. Paul": ["Downtown St. Paul", "Cathedral Hill", "Highland Park"],
+        "Rochester": ["Downtown Rochester", "Kutzky Park", "Folwell"],
+        "Jackson": ["Downtown Jackson", "Fondren", "Belhaven"],
+        "Gulfport": ["Downtown Gulfport", "Orange Grove", "Bayou View"],
+        "Hattiesburg": ["Downtown Hattiesburg", "The Avenues", "Pinehurst"],
+        "Kansas City": ["Downtown Kansas City", "Plaza Area", "Westport"],
+        "St. Louis": ["Downtown St. Louis", "Central West End", "Soulard"],
+        "Springfield": ["Downtown Springfield", "Phelps Grove", "Rountree"],
+        "Billings": ["Downtown Billings", "Heights", "South Side"],
+        "Missoula": ["Downtown Missoula", "University District", "Lewis and Clark"],
+        "Helena": ["Downtown Helena", "Euclid Avenue", "Southeast Hills"],
+        "Omaha": ["Downtown Omaha", "Benson", "Dundee"],
+        "Lincoln": ["Downtown Lincoln", "Country Club", "Antelope Park"],
+        "Bellevue": ["Downtown Bellevue", "Olde Towne", "Fontenelle Hills"],
+        "Las Vegas": ["The Strip", "Summerlin", "Downtown Las Vegas"],
+        "Reno": ["Downtown Reno", "Old Southwest", "North Valleys"],
+        "Henderson": ["Green Valley", "Anthem", "Lake Las Vegas"],
+        "Manchester": ["Downtown Manchester", "North End", "Hanover Hill"],
+        "Nashua": ["Downtown Nashua", "Amherst Street", "South Nashua"],
+        "Concord": ["Downtown Concord", "Penacook", "West Concord"],
+        "Newark": ["Downtown Newark", "Ironbound", "Forest Hill"],
+        "Jersey City": ["Downtown Jersey City", "Journal Square", "Paulus Hook"],
+        "Trenton": ["Downtown Trenton", "Wilbur", "Top Road"],
+        "Albuquerque": ["Downtown Albuquerque", "Nob Hill", "Old Town"],
+        "Santa Fe": ["Downtown Santa Fe", "Canyon Road", "South Capitol"],
+        "Las Cruces": ["Downtown Las Cruces", "Mesilla", "Alameda-Depot"],
+        "New York City": ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"],
+        "Buffalo": ["Allentown", "Elmwood Village", "North Buffalo", "South Buffalo"],
+        "Rochester": ["Park Avenue", "East End", "Highland Park", "South Wedge"],
+        "Charlotte": ["Uptown", "Dilworth", "South End"],
+        "Raleigh": ["Downtown Raleigh", "Cameron Village", "North Hills"],
+        "Greensboro": ["Downtown Greensboro", "Fisher Park", "Irving Park"],
+        "Fargo": ["Downtown Fargo", "Northport", "Horace"],
+        "Bismarck": ["Downtown Bismarck", "Northridge", "Lincoln"],
+        "Grand Forks": ["Downtown Grand Forks", "University Village", "Riverside"],
+        "Columbus": ["Downtown Columbus", "Short North", "German Village"],
+        "Cleveland": ["Downtown Cleveland", "Ohio City", "Tremont"],
+        "Cincinnati": ["Downtown Cincinnati", "Over-the-Rhine", "Hyde Park"],
+        "Oklahoma City": ["Downtown Oklahoma City", "Midtown", "Nichols Hills"],
+        "Tulsa": ["Downtown Tulsa", "Brookside", "Cherry Street"],
+        "Norman": ["Downtown Norman", "University North Park", "Brookhaven"],
+        "Portland": ["Downtown Portland", "Pearl District", "Hawthorne"],
+        "Salem": ["Downtown Salem", "South Central", "West Salem"],
+        "Eugene": ["Downtown Eugene", "Friendly Area", "Whiteaker"],
+        "Philadelphia": ["Center City", "Fishtown", "University City"],
+        "Pittsburgh": ["Downtown Pittsburgh", "Shadyside", "Lawrenceville"],
+        "Harrisburg": ["Downtown Harrisburg", "Midtown", "Allison Hill"],
+        "Providence": ["Downtown Providence", "Federal Hill", "East Side"],
+        "Warwick": ["Apponaug", "Cowesett", "Warwick Neck"],
+        "Cranston": ["Edgewood", "Auburn", "Garden City"],
+        "Columbia": ["Downtown Columbia", "Five Points", "Rosewood"],
+        "Charleston": ["Downtown Charleston", "West Ashley", "James Island"],
+        "Greenville": ["Downtown Greenville", "Greer", "Mauldin"],
+        "Sioux Falls": ["Downtown Sioux Falls", "Southwestern Sioux Falls", "Northeast Sioux Falls"],
+        "Rapid City": ["Downtown Rapid City", "West Rapid City", "North Rapid City"],
+        "Aberdeen": ["Downtown Aberdeen", "West Aberdeen", "East Aberdeen"],
+        "Nashville": ["Downtown Nashville", "East Nashville", "The Gulch"],
+        "Memphis": ["Downtown Memphis", "Midtown Memphis", "East Memphis"],
+        "Knoxville": ["Downtown Knoxville", "Fountain City", "South Knoxville"],
+        "Houston": ["Downtown Houston", "The Woodlands", "Sugar Land"],
+        "Dallas": ["Downtown Dallas", "Uptown", "Oak Cliff"],
+        "Austin": ["Downtown Austin", "South Congress", "East Austin"],
+        "Salt Lake City": ["Downtown Salt Lake City", "Sugar House", "The Avenues"],
+        "Provo": ["Downtown Provo", "East Provo", "Pleasant View"],
+        "Ogden": ["Downtown Ogden", "East Bench", "North Ogden"],
+        "Burlington": ["Downtown Burlington", "Old North End", "South End"],
+        "Montpelier": ["Downtown Montpelier", "North Montpelier", "East Montpelier"],
+        "Rutland": ["Downtown Rutland", "South Rutland", "North Rutland"],
+        "Richmond": ["Downtown Richmond", "The Fan District", "Church Hill"],
+        "Virginia Beach": ["Virginia Beach Oceanfront", "Chesapeake Beach", "Great Neck"],
+        "Norfolk": ["Downtown Norfolk", "Ghent", "Larchmont-Edgewater"],
+        "Seattle": ["Downtown Seattle", "Capitol Hill", "Ballard"],
+        "Spokane": ["Downtown Spokane", "South Hill", "North Spokane"],
+        "Tacoma": ["Downtown Tacoma", "North End", "South Tacoma"],
+        "Charleston": ["Downtown Charleston", "East End", "West Side"],
+        "Huntington": ["Downtown Huntington", "South Side", "Guyandotte"],
+        "Morgantown": ["Downtown Morgantown", "Suncrest", "South Park"],
+        "Milwaukee": ["Downtown Milwaukee", "East Side", "Bay View"],
+        "Madison": ["Downtown Madison", "Near West Side", "East Madison"],
+        "Green Bay": ["Downtown Green Bay", "Allouez", "Howard"],
+        "Cheyenne": ["Downtown Cheyenne", "South Cheyenne", "North Cheyenne"],
+        "Casper": ["Downtown Casper", "Paradise Valley", "Edgerton"],
+        "Laramie": ["Downtown Laramie", "Tree Area", "West Laramie"]
+    };
+
+    return neighborhoodData[city] || [];
+    }
+
+    </script>
+
+</body>
+</html>
