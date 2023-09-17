@@ -57,4 +57,14 @@ new_data = pd.DataFrame({
 })
 # Predict apartment IDs for the new data
 predicted_apartment_ids = model.predict(new_data)
+
+# Sort the predicted apartment IDs by likelihood (ascending order)
+sorted_apartment_ids = np.argsort(predicted_apartment_ids)
+
+# Get the top 10 most likely apartment IDs
+top_10_apartment_ids = sorted_apartment_ids[:10]
+
+print("You may love the following Apartments:")
+for apartment_id in top_10_apartment_ids:
+    print("Apartment", round(apartment_id))
 print("You may love Apartment", round(predicted_apartment_ids[0]))
