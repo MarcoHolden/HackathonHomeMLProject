@@ -2,35 +2,30 @@ import pandas as pd
 import random
 
 # Create an empty DataFrame
+# Create an empty DataFrame
 data = pd.DataFrame(columns=[
-    'apartmentId',
-    'location',
-    'price',
-    'qualityOfEducation',
-    'age',
-    'typeOfCommunity',
-    'careAfrican',
-    'careAsian',
-    'careWhite',
-    'careMexican',
-    'careOther',
-    'careNA',
-    'laundryRoom',
-    'Hospital',
-    'Insurance',
-    'Walk-able',
-    'Bike-able',
-    'EnergyEfficient',
-    'DrinkableWaterIndex',
-    'careAboutTidyNeighborhoods',
-    'MunicipalTransport',
-    'pastAverageOwnerExperience'
+        'apartmentId',
+        'location',
+        'price',
+        'year',
+        'qualityOfEducation',
+        'age',
+        'typeOfCommunity',
+        'laundryRoom',
+        'Hospital',
+        'Walk-able',
+        'Bike-able',
+        'EnergyEfficient',
+        'DrinkableWaterIndex',
+        'careAboutTidyNeighborhoods',
+        'MunicipalTransport',
+        'pastAverageOwnerExperience',
 ])
 
 # Generate fake data for 1000 rows
 for i in range(1, 1001):
     if i<50:
-        x=random.randint(100000, 120000)
+        x=random.randint(50000, 120000)
     elif i<100:
         x=random.randint(120000, 150000)
     elif i<150:
@@ -64,27 +59,21 @@ for i in range(1, 1001):
 
     new_row = {
         'apartmentId': f'{i:04}',
-        'location': f'{(random.randint(0, 99999)):05}',
+        'location': f'{(random.randint(10000, 99999)):05}',
         'price': x,
         'year': random.randint(1700, 2023),
-        'qualityOfEducation': random.randint(0, 10),
+        'qualityOfEducation': random.randint(0, 4),
         'age': random.randint(18, 100),
-        'typeOfCommunity': random.randint(0, 7),
-        'careAfrican': random.randint(0, 1),
-        'careAsian': random.randint(0, 1),
-        'careWhite': random.randint(0, 1),
-        'careMexican': random.randint(0, 1),
-        'careOther': random.randint(0, 1),
-        'careNA': random.randint(0, 1),
-        'laundryRoom': random.randint(0, 1),
+        'typeOfCommunity': random.randint(0, 5),
+        'laundryRoom': random.randint(0, 2),
         'Hospital': random.randint(0, 1),
         'Insurance': random.randint(0, 1),
-        'Walk-able': random.randint(0, 5),
+        'Walk-able': random.randint(0, 3),
         'Bike-able': random.randint(0, 5),
-        'EnergyEfficient': random.randint(0, 10),
+        'EnergyEfficient': random.randint(0, 3),
         'DrinkableWaterIndex': random.randint(0, 5),
-        'careAboutTidyNeighborhoods': random.randint(0, 1),
-        'MunicipalTransport': random.randint(0, 1),
+        'careAboutTidyNeighborhoods': random.randint(0, 4),
+        'MunicipalTransport': random.randint(0, 3),
         'pastAverageOwnerExperience': random.randint(0, 100),
     }
     data = pd.concat([data, pd.DataFrame(new_row, index=[0])], ignore_index=True)

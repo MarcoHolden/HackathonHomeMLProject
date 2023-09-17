@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import  mean_squared_error, r2_score
-from BackEndRecomendations import recomender
+from BackEndRecommendations import recomender
 #This initializes what we need for ML
 apartment_data = pd.read_csv('apartment_data.csv')
 X = apartment_data[['location', 'price', 'year', 'qualityOfEducation', 'age', 'typeOfCommunity', 'laundryRoom','Hospital','Walk-able','Bike-able','EnergyEfficient','DrinkableWaterIndex', 'careAboutTidyNeighborhoods', 'MunicipalTransport']]
@@ -99,9 +99,18 @@ def resultForm():
             dataForML = MLDataConversion(lst)
             predicted_apartment_ids = model.predict(dataForML)
             HomeQualities=recomender(predicted_apartment_ids)
-            print("list", HomeQualities)
+            print("list", HomeQualities, "type of variable:", type(HomeQualities))
+            price = HomeQualities[2]
+            price = str(price)[::-1]
+            price = price[0:3] + "," + price [3:6]
+            price = price[::-1]
+            print("price:", price)
+            zipcode = HomeQualities[1]
+            year_built = HomeQualities[3]
+            rating = HomeQualities[4]
             print("This apartment is good :", int(predicted_apartment_ids[0]))
-            return render_template("index2.html")
+            return render_template("result_page.html", price = price, zip_code = zipcode, 
+                                   year_built = year_built, rating = rating)
         else:
               "error in result form"
 

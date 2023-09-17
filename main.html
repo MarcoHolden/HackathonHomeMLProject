@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
     <title>House Finder</title>
    
 </head>
 <body>
     <div class="form-container">
-        <h1>House Finder</h1>
+        <h1 class="myheader">Home Finder</h1>
+        <h3 class="secondheader">Just for You!</h3>
         <form id="house-finder-form" action="/resultForm" method="POST">
-            <label for="state">State:</label>
+            <label for="state" class="headings">State:</label>
             <select id="state" name="state" onchange="populateCities()" required>
                 <option value="">Select State</option>
                 <option value="Alabama">Alabama</option>
@@ -66,21 +68,21 @@
                 <option value="Wyoming">Wyoming</option>
             </select>
    
-            <label for="city">City:</label>
+            <label for="city" class="headings">City:</label>
             <select id="city" name="city" onchange="populateNeighborhoods()" disabled required>
                 <option value="">Select City</option>
             </select>
    
-            <label for="neighborhood">Neighborhood:</label>
+            <label for="neighborhood" class="headings">Neighborhood:</label>
             <select id="neighborhood" name="neighborhood" disabled required>
                 <option value="">Select Neighborhood</option>
             </select>
 
-            <label for="zip-code">Zip Code:</label>
+            <label for="zip-code" class="headings">Zip Code:</label>
             <input type="text" id="zip-code" name="zip-code" placeholder="e.g., 12345" required>
 
-            <label for="price_range">Price Range:</label>
-            <input type="text" id="price_range" name="price_range" placeholder="e.g., 200,000" required>
+            <label for="price_range" class="headings">Price Range:</label>
+            <input type="text" id="price_range" name="price_range" placeholder="e.g., 200000 (no commas)" required>
             <!-- <select id="price_range" name="price_range">
                 <option value="">Select a Price Range</option>
                 <option value = >$50,000 - $100,000</option>
@@ -101,10 +103,10 @@
                 <option >$750,000 - $800,000</option>
             </select> -->
 
-            <label for="year">Year:</label>
+            <label for="year" class="headings">Year:</label>
             <input type="number" id="year" name="year" placeholder="e.g., 2000" required>
 
-            <label for="age">Your Age:</label>
+            <label for="age" class="headings">Your Age:</label>
             <input type="number" id="age" name="age" placeholder="Your age" required>
 
 
@@ -113,7 +115,7 @@
          
            
            
-            <label for="energy-efficiency">Energy Efficiency</label>
+            <label for="energy-efficiency" class="headings">Energy Efficiency</label>
             <select id="energy-efficiency" name="energy-efficiency" required>
                 <option value="">Select an Option</option>
                 <option value="0">Highly energy-efficient</option>
@@ -122,7 +124,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
 
-            <label for="laundry-room">Laundry Room</label>
+            <label for="laundry-room" class="headings">Laundry Room</label>
             <select id="laundry-room" name="laundry-room" required>
                 <option value="">Select an Option</option>
                 <option value="0">Must have one</option>
@@ -130,7 +132,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
 
-            <label for="hospital">Hospital</label>
+            <label for="hospital" class="headings">Hospital</label>
             <select id="hospital" name="hospital" required>
                 <option value="">Select an Option</option>
                 <option value="0">Must be within 5 miles</option>
@@ -138,7 +140,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
 
-            <label for="bike-friendly">Biker Friendliness</label>
+            <label for="bike-friendly" class="headings">Biker Friendliness</label>
             <select id="bike-friendly" name="bike-friendly" required>
                 <option value="">Select an Option</option>
                 <option value="0">Highly bike-friendly</option>
@@ -147,7 +149,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
 
-            <label for="water-drinkability">Water Drinkability Index</label>
+            <label for="water-drinkability" class="headings">Water Drinkability Index</label>
             <select id="water-drinkability" name="water-drinkability" required>
                 <option value="">Select an Option</option>
                 <option value="0">1</option>
@@ -157,7 +159,7 @@
                 <option value="4">5</option>
             </select>
 
-            <label for="tidy-neighborhood">Cleanliness of Neighborhood</label>
+            <label for="tidy-neighborhood" class="headings">Cleanliness of Neighborhood</label>
             <select id="tidy-neighborhood" name="tidy-neighborhood" required>
                 <option value="">Select an Option</option>
                 <option value="0">Very Clean</option>
@@ -168,7 +170,7 @@
 
 
 
-            <label for="public-transport">Public Transport</label>
+            <label for="public-transport" class="headings">Public Transport</label>
             <select id="public-transport" name="public-transport" required>
                 <option value="">Select an Option</option>
                 <option value="0">Widely available</option>
@@ -177,7 +179,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
 
-            <label for="walk-friendly">Pedestrian Friendliness</label>
+            <label for="walk-friendly" class="headings">Pedestrian Friendliness</label>
             <select id="walk-friendly" name="walk-friendly" required>
                 <option value="">Select an Option</option>
                 <option value="0">Highly walk-friendly</option>
@@ -186,7 +188,7 @@
                 <option value="3">Doesn't really matter</option>
             </select>
            
-            <label for="community">Type of Community:</label>
+            <label for="community" class="headings">Type of Community:</label>
             <select id="community" name="community" required>
                 <option value="">Select an Option</option>
                 <option value=0>Age-Restricted</option>
@@ -197,7 +199,7 @@
                 <option value=5>No Preference</option>
             </select>
 
-            <label for="community">Quality of Education:</label>
+            <label for="community" class="headings">Quality of Education:</label>
             <select id="rating1" name="rating1" required>
                 <option value="">Select an Option</option>
                 <option value=0>1</option>
@@ -208,7 +210,9 @@
                 <option value=5>No Preference</option>
             </select>
 
-            <button type="submit">Find Houses</button>
+            <div class="mybutton">
+                <button type="submit">Lookup!</button>
+            </div>
            
         </form>
     </div>
